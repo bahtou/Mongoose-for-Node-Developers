@@ -4,14 +4,14 @@ var http = require('http')
   , Schema = mongoose.Schema
   , server, n;
 
-server = http.createServer(function(request, response) {
-  var path = url.parse(request.url).pathname.slice(0, 4);
-  n = url.parse(request.url).pathname.slice(5);
-
-  // connect to mongo
+// connect to mongo
   mongoose.set('debug', true);
   var db = mongoose.connect('localhost', 'm101', {server: {poolSize: 1}}).connection;
   db.on('error', console.error.bind(console, 'Could not connect to mongo server'));
+
+server = http.createServer(function(request, response) {
+  var path = url.parse(request.url).pathname.slice(0, 4);
+  n = url.parse(request.url).pathname.slice(5);
 
   // create `nums` instance model
   var nums = db.model('funnynumbers', new Schema({value: Number}, {safe: true}));
