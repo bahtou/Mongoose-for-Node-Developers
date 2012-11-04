@@ -6,7 +6,7 @@ A course **M101: MongoDB for Developers** is being offered at [10gen](https://ed
 The course is using `python` to stage working with mongo database.  
 I am currently working with `node.js` so it's only logical that I mimic the course using `node.js`.  
 
-Feel free to follow along, contribute and `donkey.punch` if my code begins to anything like a flying spaghetti monster.
+Feel free to follow along, contribute and `donkey.punch` me if my code begins to anything like a flying spaghetti monster.
 
 
 **Requirements**
