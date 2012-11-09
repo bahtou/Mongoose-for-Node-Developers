@@ -13,6 +13,7 @@ Below are some useful tips and resources.
 
 Connecting to MongoDB
 ---------------------
+
 * * * 
 
 There are a variety of ways to connect to MongoDB.  
@@ -25,6 +26,7 @@ Checkout out the new [docs](http://mongoosejs.com/docs/connections.html) and old
 
 Querying
 --------
+
 * * *
 
 ####Field selection of data####
@@ -41,6 +43,7 @@ old docs [Query Streams](http://mongoosejs.com/docs/2.8.x/docs/querystream.html)
 
 Nuanaces
 --------
+
 * * *
 
 Must define schema first to create a collections model.  
