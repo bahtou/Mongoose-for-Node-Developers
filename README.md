@@ -20,6 +20,7 @@
 
 <br>
 <br>
+checkout **`validate_code.py`** for the test translation
 Summary
 =====
 ---
