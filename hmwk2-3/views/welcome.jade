@@ -1,0 +1,17 @@
+extends layout
+
+block stylesheets
+  style
+    .label {text-align: right}
+    .error {color: red}
+
+block content
+  | Welcome #{username}
+  p
+    ul
+      li
+        a(href='/') Goto Blog Home
+      li
+        a(href='/logout') Logout
+      li
+        a(href='/newpost') Create a New Post

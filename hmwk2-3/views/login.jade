@@ -1,0 +1,30 @@
+extends layout
+
+block stylesheets
+  style
+    .label {text-align: right}
+    .error {color: red}
+
+block content
+  h2 Login
+  form(method='post')
+    table
+      tr
+        td.label
+          | Username
+        td
+          input(type='text', name='username', value= username)
+        td.error
+      tr
+        td.label
+          | Password
+        td
+          input(type='password', name='password', value='')
+        td.error
+          if(loginError)
+            | #{loginError}
+    input(type='submit')
+    br
+    br
+    | Not registered? 
+    a(href='/signup') Sign up!

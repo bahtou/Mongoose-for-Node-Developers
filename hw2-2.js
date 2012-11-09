@@ -1,6 +1,6 @@
 /*
   homework 2.2
-  Write a program in the language of your choice that will remove the lowest homework 
+  Write a program in the language of your choice that will remove the lowest homework
   score for each student from the dataset that you imported in HW 2.1.
 */
 
@@ -23,7 +23,7 @@ var gradesSchema = new Schema(
 var grades = db.model('grades', gradesSchema);
 
 // instance of query
-var data = grades.find({type: 'homework'}).sort('student_id -score');
+var data = grades.find({type: 'homework'}, {safe: true}).sort('student_id -score');
 
 data.exec(function(err, docs) {
   // `docs` is an array populated with objects
@@ -38,7 +38,7 @@ data.exec(function(err, docs) {
     }
 });
 
-/* 
+/*
   The code below is unnecessary.  You can check if the above execution worked by
   using the Mongo Shell.
   
@@ -67,4 +67,3 @@ function logIT ()
   Execute the code below in the MONGO SHELL to get your answer
   db.grades.aggregate({'$group':{'_id':'$student_id', 'average':{$avg:'$score'}}}, {'$sort':{'average':-1}}, {'$limit':1})
 */
-
