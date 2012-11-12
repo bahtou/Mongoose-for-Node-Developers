@@ -1,4 +1,5 @@
 var mongoose = require( 'mongoose' );
+// mongoose.set('debug', true);
 
 module.exports.connect = function( config, callback ) {
   var uri = 'mongodb://';

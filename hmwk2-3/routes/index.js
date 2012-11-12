@@ -1,4 +1,5 @@
-var controllers = require('../controllers')
+var mid = require('../middleware/middleware')
+  , controllers = require('../controllers')
   , home = controllers.Home
   , user = controllers.User;
 
@@ -8,7 +9,7 @@ module.exports = function( app ){
 
   //signup
   app.get( '/signup', user.presentSignup );
-  app.post( '/signup', user.processSignup );
+  app.post( '/signup', mid.validateSignup, mid.newUser, user.processSignup );
 
 /*
   In order to signUp the user input must pass sanitation, validation and uniqueness.
@@ -24,13 +25,13 @@ module.exports = function( app ){
 
   // login
   app.get('/login', user.presentLogin);
-  app.post('/login', user.processLogin);
+  app.post('/login', mid.validateLogin, user.processLogin);
 
   // welcome
-  app.get('/welcome', user.presentWelcome);
+  app.get('/welcome', mid.loginCheck, user.presentWelcome);
 
   // logout
-  app.get('/logout', user.processLogout);
+  app.get('/logout', mid.checkSecSess, user.processLogout);
 
   // internal error
   app.get('/internal_error', function() {

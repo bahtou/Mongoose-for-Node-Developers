@@ -17,27 +17,27 @@ block content
             td
               input(type='text', name='username', value= username)
             td.error
-              if(errors.username)
+              - if(errors.username)
                 | #{errors.username.msg}
           tr
             td.label Password
             td
               input(type='password', name='password')
             td.error
-              if(errors.password)
+              - if(errors.password)
                 | #{errors.password.msg}
           tr
             td.label Verify Password
             td
               input(type='password', name='verify')
             td.error
-              if(errors.verify)
+              - if(errors.verify)
                 | #{errors.verify.msg}
           tr
             td.label Email (optional)
             td
               input(type='text', name='email', value= email)
             td.error
-              if(errors.email)
+              - if(errors.email)
                 | #{errors.email.msg}
         input(type='submit')

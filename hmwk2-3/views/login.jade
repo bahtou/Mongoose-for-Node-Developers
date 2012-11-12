@@ -21,7 +21,7 @@ block content
         td
           input(type='password', name='password', value='')
         td.error
-          if(loginError)
+          - if(loginError)
             | #{loginError}
     input(type='submit')
     br

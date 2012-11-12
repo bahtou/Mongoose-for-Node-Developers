@@ -12,17 +12,20 @@ var SessionSchema = module.exports = new mongoose.Schema({
   safe: true
 });
 
-SessionSchema.methods.hashStr = function(s) {
-  var key = 'thisisnotsecret';
-  return crypto.createHmac('md5', key).update(s).digest('hex');
-};
+SessionSchema.method({
 
-SessionSchema.methods.makeSecureVal = function(s) {
-  return s + '|' + this.hashStr(s);
-};
+  hashStr: function(s) {
+    var key = 'thisisnotsecret';
+    return crypto.createHmac('md5', key).update(s).digest('hex');
+  },
 
-SessionSchema.methods.checkSecureVal = function(h) {
-  var val = h.split('|')[0];
-  if (h === this.makeSecureVal(val))
-    return val;
-};
+  makeSecureVal: function(s) {
+    return s + '|' + this.hashStr(s);
+  },
+
+  checkSecureVal: function(h) {
+    var val = h.split('|')[0];
+    if (h === this.makeSecureVal(val))
+      return val;
+  }
+});
