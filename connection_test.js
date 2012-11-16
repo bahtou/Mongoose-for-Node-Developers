@@ -18,8 +18,4 @@ grades.find({}).exec(function(err, data) {
   if (!err) return console.log('hi');
 });
 
-/*
-  `aggregate` does not work
-  grades.aggregate({'$group':{'_id':'$student_id', 'average':{$avg:'$score'}}}, {'$sort':{'average':-1}}, {'$limit':1});
-  submitted issue
-*/
+grades.aggregate({'$group':{'_id':'$student_id', 'average':{$avg:'$score'}}}, {'$sort':{'average':-1}}, {'$limit':1});
