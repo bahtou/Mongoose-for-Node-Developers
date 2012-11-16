@@ -1,0 +1,34 @@
+extends layout
+
+block stylesheets
+  style
+    .label {text-align: right}
+    .error {color: red}
+
+block content
+  if username
+    | Welcome 
+    b #{username}
+    a(href='/logout')  Logout
+    |  | 
+    a(href='/')  Blog Home
+    p
+
+    form(action='/newpost', method='POST')
+      .error
+        | #{errors}
+      h2 Title
+      input(type='text', name='subject', size='120', value='#{subject}')
+      br
+      h2
+        | Blog Entry
+        h2
+          textarea(name='body', cols='120', rows='20') #{body}
+          br
+          h2 Tags
+          | Comma separated, please
+          br
+          input(type='text', name='tags', size='120', value='#{tags}')
+          br
+          p
+            input(type='submit', value='Submit')
