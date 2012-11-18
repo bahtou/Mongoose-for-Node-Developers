@@ -1,0 +1,40 @@
+extends ../layout
+
+
+block content
+  .row
+    .span12
+      section.centered
+        h2 Signup
+        p Already a user?
+          a(href='/login')  Login
+        form.form-horizontal(method='post')
+          .control-group
+            .control-label(for='username') Username
+            .controls
+              input.input-xlarge(type='text', name='username', value= username)
+              span.error
+                - if (errors.username)
+                  |  #{errors.username.msg}
+          .control-group
+            .control-label(for='password') Passowrd
+            .controls
+              input.input-xlarge(type='password', name='password', value= '')
+              span.error
+                - if (errors.password)
+                  |  #{errors.password.msg}
+          .control-group
+            .control-label(for='verify') Verify Password
+            .controls
+              input.input-xlarge(type='password', name='verify', value='')
+              span.error
+                - if (errors.verify)
+                  | #{errors.verify.msg}
+          .control-group
+            .control-label(for='email') Email (optional)
+            .controls
+              input.input-xlarge(type='text', name='email', value= email)
+              span.error
+                - if (errors.email)
+                  | #{errors.email.msg}
+          input(type='submit')

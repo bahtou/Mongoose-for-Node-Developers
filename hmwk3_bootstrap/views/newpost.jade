@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  .row
+    .span12
+      h2 New Post
+      if errors
+        .alert.alert-error
+            a.close(href='#', data-dismiss='alert') x
+            | #{errors}
+      form.form-horizontal(action='/newpost', method='POST')
+        .control-group
+          label.control-label(for='subject')
+            | Title
+          .controls
+            input.input-xlarge(type='text', name='subject', size='120', value='#{subject}')
+        .control-group
+          label.control-label(for='body')
+            | Blog Entry
+          .controls
+            textarea.span6(name='body', rows='20') #{body}
+        .control-group
+          label.control-label(for='tags')
+            | Tags
+          .controls
+            input.input-xlarge(type='text', name='tags', value='#{tags}')
+            span.help-inline
+              | Comma separated, please
+        .control-group
+          .controls
+            input.btn(type='submit', value='Submit')

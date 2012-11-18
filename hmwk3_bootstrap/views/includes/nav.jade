@@ -1,0 +1,69 @@
+.navbar.navbar-static-top.navbar-inverse
+  .navbar-inner
+    .container-fluid
+      a.brand(href='/', name='myBlog')
+        | My Blog
+      if username
+        ul.nav.pull-right
+          li.divider-vertical
+          li
+            a(href='/logout')
+              | Logout
+          li.divider-vertical
+          li
+            a(href='/newpost')
+              | New Post
+          li.divider-vertical
+        span.navbar-text.pull-right
+          | Welcome
+          strong  #{username}
+      else
+        ul.nav.pull-right
+          li.divider-vertical
+          li
+            a(href='/login')
+              | Login
+          li.divider-vertical
+
+
+      //- .nav-collapse
+      //-   ul.nav
+      //-     li.active
+      //-       a(href='/')
+      //-         i.icon-home.icon-white
+      //-         |  Home
+      //-     li.divider-vertical
+      //-     li
+      //-       a(href='#')
+      //-         i.icon-file.icon-white
+      //-         |  Pages
+      //-     li.divider-vertical
+      //-     li
+      //-       a(href='#')
+      //-         i.icon-envelope.icon-white
+      //-         |  Messages
+      //-     li.divider-vertical
+      //-     li
+      //-       a(href='#')
+      //-         i.icon-signal.icon-white
+      //-         |  Stats
+      //-     li.divider-vertical
+      //-     li
+      //-       a(href='#')
+      //-         i.icon-lock.icon-white
+      //-         |  Permissions
+      //-     li.divider-vertical
+      //- .btn-group.pull-right
+      //-   a.btn.dropdown-toggle(href='#', data-toggle='dropdown')
+      //-     i.icon-user
+      //-     |  Admin
+      //-     span.caret
+      //-   ul.dropdown-menu
+      //-     li
+      //-       a(href='/login')
+      //-         i.icon-ok-sign
+      //-         |  Login
+      //-     li
+      //-       a(href='/logout')
+      //-         i.icon-share
+      //-         |  Logout

@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .row
+    .span12
+      section.centered
+        h2 Login
+        if loginError
+          | #{loginError}
+        form.form-horizontal(method='post')
+          .control-group
+            .control-label(for='username')Username
+            .controls
+              input.input-xlarge(type='text', name='username', value= username, required='required')
+          .control-group
+            .control-label(for='password')
+            .controls
+              input.input-xlarge(type='password', name='password', value='', required='required')
+          .control-group
+            .controls
+              input.btn(type='submit', value='Submit')
+          br
+          | Not registered? 
+          a(href='/signup') Sign up!
