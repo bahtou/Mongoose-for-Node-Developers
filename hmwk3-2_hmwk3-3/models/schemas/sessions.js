@@ -24,6 +24,9 @@ SessionSchema.method({
   },
 
   checkSecureVal: function(h) {
+    console.log('check secure value: ' + h);
+    if (h.split('.')[0])
+      h = h.split('.')[0];
     var val = h.split('|')[0];
     if (h === this.makeSecureVal(val))
       return val;

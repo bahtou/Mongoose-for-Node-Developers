@@ -17,7 +17,7 @@
     ],
   "description": "Week 2 homework",
   "dependencies": {
-    "express": "3.0.0rc2",
+    "express": "3.0.3",
     "jade": "0.27.6",
     "mongoose":"3.3.1",
     "nodemon": "0.6.23",

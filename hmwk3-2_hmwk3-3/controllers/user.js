@@ -32,17 +32,19 @@ module.exports.processSignup = function(req, res) {
 
   // set cookie
   var cookie = session.makeSecureVal(session._id.toString());
-  res.cookie('session', cookie);
+  res.cookie('session', cookie, {signed: true});
   res.redirect('/welcome');
 }; //end processSignup
 
 // welcome
 module.exports.presentWelcome = function(req, res) {
+  console.log('welcome begin');
     if (typeof req.user === "undefined") {
       console.log("welcome: can't identify user...redirecting to signup");
       return res.redirect('/signup');
     }
 
+    console.log('welcome end');
     res.render('welcome', {
       title: 'Welcome',
       username: req.user
@@ -72,6 +74,7 @@ module.exports.presentLogin = function(req, res) {
 
 // process login
 module.exports.processLogin = function(req, res) {
+  console.log('process login begin');
   // looks good. start a new session
     var session = new Session({
         username: req.body.username
@@ -95,7 +98,8 @@ module.exports.processLogin = function(req, res) {
 
       // set cookie
       var cookie = session.makeSecureVal(session_id);
-      res.cookie('session', cookie);
+      res.cookie('session', cookie, {signed: true});
+      console.log('process login end');
       res.redirect('/welcome');
     });
 }; // end process login

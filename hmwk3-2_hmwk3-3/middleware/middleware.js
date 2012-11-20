@@ -62,15 +62,8 @@ module.exports.newUser = function(req, res, next) {
 module.exports.loginCheck = function(req, res, next) {
   console.log('loginCheck begin');
 
-  var cookie = req.cookies.session;
-  console.log('get cookie: ' + req.cookies.session);
-  // console.log('get signed cookie: ' + req.signedCookies.session);
-  // console.log('get signed cookie: ' + req.signedCookies('session'));
-  //    TypeError: Property 'signedCookies' of object #<IncomingMessage> is not a function
-
-  // for (var key in cookie)
-  //   console.log('cookie: ' + key + '|' + cookie[key]);
-
+  var cookie = req.signedCookies.session;
+  console.log('signed cookie: ' + req.signedCookies.session);
 
   if (typeof cookie === "undefined" || typeof cookie === "null") {
     console.log('no cookie');
@@ -106,12 +99,12 @@ module.exports.loginCheck = function(req, res, next) {
 // check secure session
 module.exports.checkSecSess = function(req, res, next) {
 
-  if (typeof req.cookies.session === "undefined") {
+  if (typeof req.signedCookies.session === "undefined") {
     console.log('no cookie...');
     return res.redirect('/login');
   }
 
-  var cookie = req.cookies.session;
+  var cookie = req.signedCookies.session;
   var session_id = new Session().checkSecureVal(cookie);
 
   if (typeof session_id === "undefined") {
@@ -136,7 +129,7 @@ module.exports.validateLogin = function(req, res, next) {
       return res.redirect('/internal_error/mid.validateLogin/' + err.code +'/' + err);
     }
 
-    console.log('user: ' + user);
+    // console.log('user: ' + user);
     // 'user' variable autocast to true
     if (!user) {
       console.info('User not in database');

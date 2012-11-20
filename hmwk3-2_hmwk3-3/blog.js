@@ -27,7 +27,7 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(expressValidator);
   app.use(express.cookieParser('m101Blog'));
-  app.use(express.session({secret: 'm101Blog'}));
+  app.use(express.session());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });

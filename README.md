@@ -8,7 +8,11 @@ WEEK 3 Homework
 *  In middleware, updated the `validateLogin()` db query error to redirect to `internal_error`
 *  In `validateLogin()` updated login error when username not found in database `loginError: 'Unknown user name'`
 *  `processLogout()` now uses `res.clearCookie`
-*  Problem getting signed cookie: In `processLogin()`, updated `res.cookie` to `{signed: true}`.  Then updated the `req.signedCookies` in `loginCheck()` but unable to read `req.signedCookies()`
+*  In `processLogin()`, updated `res.cookie` to `{signed: true}`.  Then updated the `req.signedCookies` in `loginCheck()`.  Also for `processSignup()`
+
+> From the last item on the list I ran into a problem regarding 'req.signedCookies.name'.  After upgrading to `express 3.0.3` the problem goes away.
+
+> Note that in `package.json` I updated the express dependency.
 
 ##hmwk3-1
 The crux of this assignment is the update  
