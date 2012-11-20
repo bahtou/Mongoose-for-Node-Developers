@@ -3,6 +3,13 @@ WEEK 3 Homework
 
 ---
 
+#Update 20/11/2012 14:02
+
+*  In middleware, updated the `validateLogin()` db query error to redirect to `internal_error`
+*  In `validateLogin()` updated login error when username not found in database `loginError: 'Unknown user name'`
+*  `processLogout()` now uses `res.clearCookie`
+*  Problem getting signed cookie: In `processLogin()`, updated `res.cookie` to `{signed: true}`.  Then updated the `req.signedCookies` in `loginCheck()` but unable to read `req.signedCookies()`
+
 ##hmwk3-1
 The crux of this assignment is the update  
 `students.findByIdAndUpdate(id, {$pull: {scores: lowestScore}}).exec()`  

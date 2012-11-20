@@ -61,8 +61,17 @@ module.exports.newUser = function(req, res, next) {
 
 module.exports.loginCheck = function(req, res, next) {
   console.log('loginCheck begin');
-  // console.log('cookie session: ' + req.cookies.session);
+
   var cookie = req.cookies.session;
+  console.log('get cookie: ' + req.cookies.session);
+  // console.log('get signed cookie: ' + req.signedCookies.session);
+  // console.log('get signed cookie: ' + req.signedCookies('session'));
+  //    TypeError: Property 'signedCookies' of object #<IncomingMessage> is not a function
+
+  // for (var key in cookie)
+  //   console.log('cookie: ' + key + '|' + cookie[key]);
+
+
   if (typeof cookie === "undefined" || typeof cookie === "null") {
     console.log('no cookie');
     return next();
@@ -115,7 +124,7 @@ module.exports.checkSecSess = function(req, res, next) {
 };
 
 module.exports.validateLogin = function(req, res, next) {
-
+  console.log('validate login begin');
   // STUDENTS: FILL IN THE NEXT LINE OF CODE. THE TASK IS TO QUERY THE USERS COLLECTION
   // USING THE find_one METHOD, QUERYING FOR A USER WHO'S _id IS THE username
   // PASSED INTO VALIDATE LOGIN. ASSIGN THER RESULT TO A VARIABLE CALLED user
@@ -124,26 +133,25 @@ module.exports.validateLogin = function(req, res, next) {
   User.findOne({_id: req.body.username}, function(err, user) {
     if (err) {
       console.error('Unable to query database for user');
-      return res.redirect('/login');
+      return res.redirect('/internal_error/mid.validateLogin/' + err.code +'/' + err);
     }
 
     console.log('user: ' + user);
-    // does 'user' variable autocast to true
+    // 'user' variable autocast to true
     if (!user) {
       console.info('User not in database');
       return res.render('login', {
         title: 'Login Error',
         username: req.body.username,
-        loginError: 'Invalid Login'
+        loginError: 'Unknown user name'
       });
     }
 
+    // username found
     var password = user.password.split(',')[0];
     var salt = user.password.split(',')[1];
-    // console.log(user.password);
-    // console.log(password, salt);
-    // console.log(new User().authenticate(user.password, password, salt));
 
+    // authenticate username + password
     if (!new User().authenticate(user.password, password, salt)) {
       console.log('user password is not a match');
       return res.render('login', {
@@ -153,7 +161,9 @@ module.exports.validateLogin = function(req, res, next) {
       });
     }
 
-    next();
+    req.user = req.body.username;
+    console.log('validate login end');
+    return next();
   });
 };
 
