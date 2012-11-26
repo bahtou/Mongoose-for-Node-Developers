@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  .row
+  .span12
+    .hero-unit
+      h2 Welcome
+        b  #{username}
+      .btn-toolbar
+        a.btn(href='/') Go to Blog Home
+        br
+        a.btn(href='/newpost') Create a New Post
+        br
+        a.btn(href='/logout') Logout
