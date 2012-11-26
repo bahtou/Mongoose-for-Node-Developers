@@ -50,7 +50,7 @@ Or
 
 When your application starts up, Mongoose automatically calls ensureIndex for each defined index. It is recommended this behavior be disabled in production by setting the autoIndex option of your schema to false.
 
->`animalSchema.set('autoIndex', false);  
-// or  
-new Schema({..}, { autoIndex: false });`
+    animalSchema.set('autoIndex', false);  
+	// or  
+	new Schema({..}, { autoIndex: false });
 
