@@ -15,7 +15,7 @@
     "mongo",
     "mongoose"
     ],
-  "description": "Week 2 homework",
+  "description": "Week 3 homework",
   "dependencies": {
     "express": "3.0.3",
     "jade": "0.27.6",

@@ -20,14 +20,16 @@ module.exports.validateSignup = function(req, res, next) {
     });
   }
 
-  req.errors = req.validationErrors(true);
   next();
 };
 
 module.exports.newUser = function(req, res, next) {
 
   User.findOne({_id: req.body.username}, function(err, user) {
-    if (err) return console.error('problem accessing newUser');
+    if (err) {
+      console.error('Unable to query database for newuser');
+      return res.redirect('/internal_error/mid.newUser/' + err.code +'/' + err);
+    }
 
     if (user) {
       req.validate('username', 'Username already in use. Please choose another').isNull();

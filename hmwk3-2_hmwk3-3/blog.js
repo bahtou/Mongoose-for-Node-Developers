@@ -36,6 +36,7 @@ app.configure('development', function(){
   app.use(express.errorHandler({showStack: true, dumpExceptions: true}));
 });
 
+// routes directed here
 routes(app);
 
 http.createServer(app).listen(app.get('port'), function(){

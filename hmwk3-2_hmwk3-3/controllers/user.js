@@ -20,15 +20,22 @@ module.exports.processSignup = function(req, res) {
   });
 
   session.save(function(err) {
-    if(err) {
-      console.log('error saving session');
-      return res.redirect('/signup', {
-        title: 'Signup Error',
-        username: req.body.username,
-        email: req.body.email
-      });
-   }
-  });
+    // would there be duplicates in the signUp process??
+    if (err) {
+        if (err.code === 11000) {
+          console.log('duplicate session entry.  Redirect to welcome page.');
+          return res.redirect('/welcome');
+        }
+        else {
+          console.error('error saving session: ' + err);
+          return res.redirect('/signup', {
+            title: 'Signup Error',
+            username: req.body.username,
+            email: req.body.email
+          });
+        }
+      }
+  }); // end process sign up
 
   // set cookie
   var cookie = session.makeSecureVal(session._id.toString());
@@ -99,7 +106,7 @@ module.exports.processLogin = function(req, res) {
       // set cookie
       var cookie = session.makeSecureVal(session_id);
       res.cookie('session', cookie, {signed: true});
-      console.log('process login end');
+      console.log("process login end");
       res.redirect('/welcome');
     });
 }; // end process login
