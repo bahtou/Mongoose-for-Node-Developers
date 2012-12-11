@@ -1,0 +1,123 @@
+extends layout
+
+block addStyle
+  style
+    .hero-unit.header {
+      position: relative;
+      height: 8em;
+    }
+    h1 {
+      text-align: center;
+    }
+    p.header {
+      position: absolute;
+      left: 15%;
+      text-align: center;
+      margin-top: 2em;
+      width: 70%;
+      background-color: #1A1A1A;
+      color: #E9E9E9;
+    }
+    hr {
+      border-color: #1A1A1A;
+    }
+
+    header.postInfo, .postTitle, .postMeta, .postBy, .postTime, .commentCounts, .postBody, .postTags {
+      //- border: thin solid red;
+    }
+
+    .postTitle, .postMeta, .postBy, .postTime, .commentCounts {
+      margin: 0 0;
+      padding: 0 0;
+    }
+
+    header.postInfo h2, a.postTitle {
+      margin: 0 0;
+      padding: 0 0;
+      text-decoration: none;
+    }
+
+    .postMeta {
+      position: relative;
+      height: 2em;
+    }
+
+    .postBy, .postTime, .commentCounts {
+      position: absolute;
+      line-height: 1em;
+      font: italic .7em sans-serif;
+    }
+
+    .postBy {
+      top: 0;
+      left: 0;
+    }
+    .postTime {
+      top: 0;
+      right: 0;
+    }
+    .commentCounts {
+      bottom: 0;
+      left: 0;
+    }
+
+    article.post {
+      margin-top: 1em;
+    }
+    .postBody {
+      text-indent: 2em;
+    }
+    .postTags {
+      margin-top: .6em;
+      padding: 0 0;
+      font-size: .7em;
+    }
+    a.tag {
+      background-color: green;
+      color: white;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+      text-decoration: none;
+      padding: 3px 4px;
+      margin: 2px 2px 2px 0;
+      line-height: 2.4;
+      white-space: nowrap;
+    }
+
+block content
+  .container
+    .row
+      .span12
+        .hero-unit.header
+          h1 Welcome to 10gen MongoDB blog!
+          p.header This is the example blog for 10gen's class M101: MongoDB for Developers
+            br
+            |  Check out the course
+            a(href="https://education.10gen.com", target="_blank")  here
+          br
+        .hero-unit.content
+          hr
+          for post in posts
+            section.postSummary
+              header.postInfo
+                h2
+                  a.postTitle(href='/post/' + post.permalink) #{post.title}
+                .postMeta
+                  .postBy
+                    | By 
+                    b #{post.author}
+                  .postTime
+                    | Posted #{post.date}
+                  .commentCounts
+                    | Comments: 
+                    - var numComments = (post.comments != '') ? post.comments.length : 0
+                    a(href='/post/' + post.permalink) #{numComments}
+              article.post
+                .postBody
+                  | !{post.body}
+                .postTags
+                  em Tags: 
+                  if (post['tags'][0] != "")
+                    each tag, i in post['tags']
+                      a.tag(href='/tag/#{tag}') #{tag} 
+              hr

@@ -112,7 +112,7 @@ Example of using the updated version of the python mongo driver:
   print "inserting"
   people.insert({"name": "Tommy Glue", "favorite_color": "greenish-it"})
   ...
-</code>></pre>
+</code></pre>
 
 A new mongoClient connection class has been rolled out.
 

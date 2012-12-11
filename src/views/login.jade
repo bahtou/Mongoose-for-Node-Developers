@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .container
+    .row
+      .span4.offset4.well
+        h2 Login
+        if loginError
+          .alert.alert-error
+            a.close(data-dismiss="alert", href="#")
+              | x
+            - for (var key in loginError)
+              | #{loginError[key].msg}
+              br
+        form(method="POST")
+          input.span4(type="text", id="username", name="username", placeholder="Username", value= username)
+          input.span4(type="password", id="password", name="password", placeholder="Password", value="")
+          input.btn(type="submit", value="Submit")
+        br
+        | Not registered?
+        br
+        a(href='/signup')  Sign up!

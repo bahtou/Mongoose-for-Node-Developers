@@ -1,0 +1,23 @@
+extends layout
+
+block addStyle
+  style
+    a.welcome {
+      margin-bottom: 1em;
+    }
+
+block content
+  .container
+    .row
+      .hero-unit
+        h1 Welcome,
+          b  #{username}
+        section.welcome
+          .btn-toolbar
+            .btn-group
+              li
+                a.btn.btn-info.welcome(href='/') Go to Blog Home
+              li
+                a.btn.btn-info.welcome(href='/newpost') Create a New Post
+              li
+                a.btn.btn-warning.welcome(href='/logout') Logout
