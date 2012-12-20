@@ -5,7 +5,11 @@ WEEK 4
 
 Checkout **`models/schemas/posts.js`** to see *indexes* implemented in `mongoose`.  
 
+<<<<<<< HEAD
 Hyperlinked the `tags` in the `views/blogTemplate.jade` and `/entryTemplate.jade`.
+=======
+Feel free to follow along, contribute and `donkey.punch` me if my code begins to anything like a flying spaghetti monster.
+>>>>>>> cb3e34c9d22b1856b2c5c3cba0cd7d7e1aac5f28
 
 Added the **`/tag/:tag`** route.  
 
