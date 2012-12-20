@@ -42,7 +42,7 @@ UserSchema.method({
   // note that `.update(password)` changes the value of password making login validation tricky
   makePwHash: function(password, salt) {
     salt = salt || this.makeSalt();
-    return crypto.createHmac('sha256', salt).digest('hex') + ',' + salt;
+    return crypto.createHmac('sha256', password).digest('hex') + ',' + salt;
   }
 
 });
