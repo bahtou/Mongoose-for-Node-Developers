@@ -49,3 +49,4 @@ UserSchema.method({
 
 // module.exports = UserSchema;
 // mongoose.model('User', UserSchema);
+// thanks to sochix for the fix
