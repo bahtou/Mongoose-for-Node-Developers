@@ -1,30 +1,23 @@
 WEEK 4
 ========
 
----
+----
 
-Checkout **`models/schemas/posts.js`** to see *indexes* implemented in `mongoose`.  
-
-<<<<<<< HEAD
+Checkout **`models/schemas/posts.js`** to see *indexes* implemented in `mongoose`.
 Hyperlinked the `tags` in the `views/blogTemplate.jade` and `/entryTemplate.jade`.
-=======
-Feel free to follow along, contribute and `donkey.punch` me if my code begins to anything like a flying spaghetti monster.
->>>>>>> cb3e34c9d22b1856b2c5c3cba0cd7d7e1aac5f28
-
-Added the **`/tag/:tag`** route.  
-
+Added the **`/tag/:tag`** route.
 
 ##on Mongoose
 
 
-*Mongoose* syntax on [sorting](http://stackoverflow.com/questions/4299991/how-to-sort-in-mongoose):  
+*Mongoose* syntax on [sorting](http://stackoverflow.com/questions/4299991/how-to-sort-in-mongoose):
 
      Model.find = function find (conditions, fields, options, callback) {
       if ('function' == typeof conditions) {
         callback = conditions;
         conditions = {};
         fields = null;
-        options = null;  
+        options = null;
     } else if ('function' == typeof fields) {
         callback = fields;
         fields = null;
@@ -32,9 +25,9 @@ Added the **`/tag/:tag`** route.
       } else if ('function' == typeof options) {
       callback = options;
       options = null;
-      } 
+      }
 
-Or  
+Or
 
     News.find({
     deal_id:deal._id // Search Filters
@@ -54,7 +47,7 @@ Or
 
 When your application starts up, Mongoose automatically calls ensureIndex for each defined index. It is recommended this behavior be disabled in production by setting the autoIndex option of your schema to false.
 
-    animalSchema.set('autoIndex', false);  
-	// or  
+    animalSchema.set('autoIndex', false);
+	// or
 	new Schema({..}, { autoIndex: false });
 
